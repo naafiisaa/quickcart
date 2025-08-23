@@ -1,36 +1,221 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextStore - World Of Gadgets & Accessories
 
-## Getting Started
+**Welcome to World Of Gadgets & Accessories**  
+Upgrade your life with smart gadgets and stylish accessories that make everyday life easier and more fun.
 
-First, run the development server:
+🔗
+## 📖 Project Description
+
+QuickCart is a modern e-commerce application built with Next.js 15 that showcases gadgets . The application features a clean, responsive design with both public and protected pages. Users can browse products publicly, view detailed product information, and after authentication, manage products through a protected dashboard.
+
+### Key Features
+
+- **Public Access**: Browse products and view details without authentication
+- **User Authentication**: Secure login system using NextAuth.js
+- **Product Management**: Authenticated users can add new products
+- **Responsive Design**: Mobile-first approach with modern UI/UX
+- **Dark/Light Theme**: Theme toggle for better user experience
+- **Real-time Feedback**: Loading states and toast notifications
+
+## 🚀 Technologies Used
+
+- **Frontend**: Next.js 15 (App Router)
+- **Authentication**: NextAuth.js
+- **Styling**: Tailwind CSS
+- **Database**: [Your database choice - e.g., MongoDB, PostgreSQL]
+- **Deployment**: Vercel
+- **State Management**: React Context/Hooks
+- **UI Components**: Custom components with Tailwind
+
+## 📂 Route Summary
+
+| Route | Access Level | Description |
+|-------|-------------|-------------|
+| `/` | Public | Landing page with hero, product highlights, and navigation |
+| `/login` | Public | Authentication page with social/credential login |
+| `/products` | Public | Product listing page showing all available products |
+| `/products/[id]` | Public | Individual product details page |
+| `/dashboard/add-product` | Protected | Product management form (requires authentication) |
+
+## 🛠️ Setup & Installation
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or pnpm package manager
+- Git
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone
+   cd quickcart
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   pnpm install
+   ```
+
+3. **Environment Setup**
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your-nextauth-secret-key
+   
+   # Google OAuth (if using Google login)
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+   
+   # Database connection (adjust based on your database)
+   MongoDB_URL=your-database-connection-string
+   DB_NAME=your-database-name
+   NEXT_PUBLIC_IMGBB_API_KEY=your-imgbb-api-key
+   ```
+
+4. **Database Setup**
+   ```bash
+   # Set up your database schema/migrations
+   npm run db:setup
+   # or
+   pnpm run db:setup
+   # or follow your database-specific setup instructions
+   ```
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   pnpm dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Build for Production
 
 ```bash
-npm run dev
+npm run build && npm start
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm build && pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Project Structure
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+nextstore/
+├── app/
+│   ├── (auth)/
+│   │   └── login/
+│   ├── dashboard/
+│   │   └── add-product/
+│   ├── products/
+│   │   └── [id]/
+│   ├── api/
+│   │   ├── auth/
+│   │   └── products/
+│   ├── components/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── lib/
+│   ├── auth.ts
+│   └── database.ts
+├── public/
+├── .env.local
+├── next.config.js
+└── package.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Authentication Flow
 
-## Learn More
+1. Users click "Login" on the navbar
+2. Redirect to `/login` page
+3. Choose authentication method (Google OAuth or credentials)
+4. Successful login redirects to `/products`
+5. Protected routes check authentication status
+6. Unauthenticated users are redirected to login
 
-To learn more about Next.js, take a look at the following resources:
+## 💾 API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Endpoint | Method | Description | Authentication |
+|----------|--------|-------------|----------------|
+| `/api/products` | GET | Fetch all products | Public |
+| `/api/products/[id]` | GET | Fetch single product | Public |
+| `/api/products` | POST | Create new product | Required |
+| `/api/auth/[...nextauth]` | ALL | NextAuth.js handlers | - |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Features
 
-## Deploy on Vercel
+### Landing Page Components
+- **Navbar**: Navigation with login/logout functionality
+- **Hero Section**: Welcome message and call-to-action
+- **Product Highlights**: Featured products showcase
+- **Footer**: Links and company information
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### User Experience
+- Loading spinners during form submissions
+- Toast notifications for success/error messages
+- Responsive design for all screen sizes
+- Theme toggle for dark/light mode preference
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+1. Fork this repository
+2. Connect your GitHub account to Vercel
+3. Import the project
+4. Add environment variables
+5. Deploy!
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+# or
+pnpm test
+
+# Run tests in watch mode
+npm run test:watch
+# or
+pnpm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+# or
+pnpm run test:coverage
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+<!-- ## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
+
+## 📞 Support
+
+If you have any questions or need help with setup, please:
+
+- Open an issue on GitHub
+- Contact: [nafisac45@gmail.com@gmail.com]
+- Documentation: [[View Documentation](https://docs.google.com/document/d/16XhnL1g48KvJIkn_jCHAAC_I5qOMA5u8M95s_OTIte0/edit?usp=sharing)]
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- NextAuth.js for seamless authentication
+- Tailwind CSS for utility-first styling
+- Vercel for effortless deployment
+
+---
+
+**Made with ❤️ by [Nafisa Chowdhury]**
