@@ -1,4 +1,4 @@
-# NextStore - World Of Gadgets & Accessories
+#QuickCart -  Gadgets & Accessories
 
 **Welcome to World Of Gadgets & Accessories**  
 Upgrade your life with smart gadgets and stylish accessories that make everyday life easier and more fun.
@@ -103,32 +103,6 @@ npm run build && npm start
 pnpm build && pnpm start
 ```
 
-## 🏗️ Project Structure
-
-```
-nextstore/
-├── app/
-│   ├── (auth)/
-│   │   └── login/
-│   ├── dashboard/
-│   │   └── add-product/
-│   ├── products/
-│   │   └── [id]/
-│   ├── api/
-│   │   ├── auth/
-│   │   └── products/
-│   ├── components/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── lib/
-│   ├── auth.ts
-│   └── database.ts
-├── public/
-├── .env.local
-├── next.config.js
-└── package.json
-```
 
 ## 🔐 Authentication Flow
 
@@ -164,11 +138,7 @@ nextstore/
 
 
 
-1. Fork this repository
-2. Connect your GitHub account to Vercel
-3. Import the project
-4. Add environment variables
-5. Deploy!
+
 
 ## 🧪 Testing
 
@@ -191,11 +161,6 @@ pnpm run test:coverage
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 <!-- ## 📝 License
 
