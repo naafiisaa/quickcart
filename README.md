@@ -61,7 +61,7 @@ QuickCart is a modern e-commerce application built with Next.js 15 that showcase
    ```
 
 3. **Environment Setup**
-   Create a `.env.local` file in the root directory:
+   Create a `.env` file in the root directory:
    ```env
    NEXTAUTH_URL=http://localhost:3000
    NEXTAUTH_SECRET=your-nextauth-secret-key
