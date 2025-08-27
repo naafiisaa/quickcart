@@ -1,40 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { useContext } from 'react';
+import { ThemeContext } from '@/Providers/ThemeContext';
+// import { ThemeContext } from '../roviders/ThemeContext';
 
-export default function ThemeToggle() {
-    const [theme, setTheme] = useState("light");
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-    // Load saved theme from localStorage
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") || "light";
-        setTheme(savedTheme);
-        document.documentElement.setAttribute("data-theme", savedTheme);
-    }, []);
+  return (
+    <button
+      onClick={toggleTheme}
+      className={`
+   rounded-full shadow-lg border-2 md:h-12 md:w-12 w-10 h-10
+        transition-all duration-300 transform hover:scale-110
+        ${theme === 'light' 
+          ? 'bg-blue-50 text-blue-800 border-blue-800' 
+          : 'bg-blue-200 text-blue-900 border-blue-500'}
+      `}
+      title="Toggle Theme"
+    >
+      {theme === 'light' ? <FaMoon size={20} className='mx-auto'/> : <FaSun size={20} className='mx-auto' />}
+    </button>
+  );
+};
 
-    const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme); // save to localStorage
-    };
-
-    return (
-        <button onClick={toggleTheme} className="btn btn-ghost">
-            {/* Sun / Moon icon */}
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v1m0 16v1m8.66-13.66l-.7.7M4.05 19.95l-.7.7M21 12h1M2 12H1m16.95 7.95l-.7-.7M4.05 4.05l-.7-.7M12 8a4 4 0 100 8 4 4 0 000-8z"
-                />
-            </svg>
-        </button>
-    );
-}
+export default ThemeToggle;

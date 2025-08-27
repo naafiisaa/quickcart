@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #QuickCart -  Gadgets & Accessories
+=======
+# QuickCart - Gadgets & Accessories
+>>>>>>> fa4aa166a1ee41f3fe5815e225db0784171fc771
 
 **Welcome to World Of Gadgets & Accessories**  
 Upgrade your life with smart gadgets and stylish accessories that make everyday life easier and more fun.
@@ -22,7 +26,7 @@ QuickCart is a modern e-commerce application built with Next.js 15 that showcase
 - **Frontend**: Next.js 15 (App Router)
 - **Authentication**: NextAuth.js
 - **Styling**: Tailwind CSS
-- **Database**: [Your database choice - e.g., MongoDB, PostgreSQL]
+- **Database**: [ MongoDB]
 - **Deployment**: Vercel
 - **State Management**: React Context/Hooks
 - **UI Components**: Custom components with Tailwind
@@ -49,7 +53,7 @@ QuickCart is a modern e-commerce application built with Next.js 15 that showcase
 
 1. **Clone the repository**
    ```bash
-   git clone
+   git clone 
    cd quickcart
    ```
 
@@ -137,9 +141,12 @@ pnpm build && pnpm start
 - Theme toggle for dark/light mode preference
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> fa4aa166a1ee41f3fe5815e225db0784171fc771
 ## 🧪 Testing
 
 ```bash

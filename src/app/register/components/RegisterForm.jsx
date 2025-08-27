@@ -1,64 +1,120 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
-import { registerUser } from "@/app/actions/auth/registerUser";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 import SocialLogin from "@/app/login/components/SocialLogin";
+
 export default function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    await registerUser({ name, email, password });
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if (!name || !email || !password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+    try {
+      // Use NextAuth credential sign-up API (replace with your NextAuth sign-up logic)
+      await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      toast.success("Registration successful!");
+      form.reset();
+    } catch (err) {
+      toast.error(err.message || "Registration failed");
+    }
   };
+
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-8">
-      <label className="form-control w-full">
-        <div className="label w-full">
-          <span className="label-text  font-bold">Name</span>
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-center text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-100 mb-6">
+        Join QuickCart
+      </h2>
+
+      {/* Name */}
+      <div>
+        <label className="text-gray-800 dark:text-gray-200 font-semibold mb-1 block">
+          Name
+        </label>
         <input
           type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full"
           name="name"
+          placeholder="Your name"
+          className="input input-bordered w-full"
+          required
         />
-      </label>
-      <label className="form-control w-full">
-        <div className="label w-full">
-          <span className="label-text  font-bold">Email</span>
-        </div>
+      </div>
+
+      {/* Email */}
+      <div>
+        <label className="text-gray-800 dark:text-gray-200 font-semibold mb-1 block">
+          Email
+        </label>
         <input
-          type="text"
+          type="email"
           name="email"
-          placeholder="Type here"
+          placeholder="Your email"
           className="input input-bordered w-full"
+          required
         />
-      </label>
-      <label className="form-control w-full">
-        <div className="label w-full">
-          <span className="label-text font-bold">Password</span>
-        </div>
-        <input
-          type="password"
-          name="password"
-          placeholder="Type here"
-          className="input input-bordered w-full"
-        />
-      </label>
-      <button className="w-full h-12 bg-orange-500 text-white font-bold">
-        Sign Up
+      </div>
+
+      {/* Password */}
+  <div className="relative">
+  <label className="text-gray-800 dark:text-gray-200 font-semibold mb-1 block">
+    Password
+  </label>
+  <input
+    type={showPassword ? "text" : "password"}
+    name="password"
+    placeholder="Your password"
+    className="input input-bordered w-full pr-10"
+    required
+  />
+  <span
+    className="absolute right-3 top-3 cursor-pointer text-gray-600 dark:text-gray-300 text-lg"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+  </span>
+</div>
+
+      {/* Submit */}
+      <button className="btn btn-primary w-full bg-blue-900 text-white hover:bg-blue-700">
+        Register
       </button>
-      <p className="text-center">Or Sign In with</p>
+
+      <div className="divider my-4 text-gray-400 dark:text-gray-300">OR</div>
+
+      {/* Google Login */}
       <SocialLogin />
-      <p className="text-center">
-        Don't Have an account?{" "}
-        <Link href="/login" className="text-orange-500 font-bold">
+
+      {/* Login Link */}
+      <p className="mt-4 text-center text-gray-700 dark:text-gray-300 text-sm">
+        Already have an account?{" "}
+        <Link
+          href="/login"
+          className="btn-primary btn font-semibold hover:underline text-blue-900 dark:text-blue-400"
+        >
           Login
         </Link>
       </p>
     </form>
   );
 }
+
+
