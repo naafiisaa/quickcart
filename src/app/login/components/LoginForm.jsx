@@ -1,15 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import SocialLogin from "./SocialLogin";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginForm() {
   const router = useRouter();
+  const { user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    console.log(user)
+    if (user) {
+      router.push("/products");
+    }
+  },[]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,22 +31,20 @@ export default function LoginForm() {
       return;
     }
 
-    toast.loading("Submitting...");
+    toast.loading("Signing In...");
     try {
       const response = await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/",
+        callbackUrl: "/products",
         redirect: false,
       });
 
+      toast.dismiss();
       if (response?.ok) {
-        toast.dismiss();
         toast.success("Logged in successfully");
-        router.push("/");
         form.reset();
       } else {
-        toast.dismiss();
         toast.error("Failed to log in");
       }
     } catch (error) {
@@ -90,17 +97,14 @@ export default function LoginForm() {
         </span>
       </div>
 
-      {/* Submit */}
       <button className="w-full h-12 bg-blue-900 text-white font-bold rounded-md hover:bg-blue-700 transition">
         Sign In
       </button>
 
       <div className="divider text-gray-400 dark:text-gray-300">OR</div>
 
-      {/* Social Login */}
       <SocialLogin />
 
-      {/* Register Link */}
       <p className="text-center text-gray-700 dark:text-gray-300">
         Don’t have an account?{" "}
         <Link

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+
 import { FaUsers, FaShoppingCart, FaStar, FaBoxOpen } from "react-icons/fa";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";

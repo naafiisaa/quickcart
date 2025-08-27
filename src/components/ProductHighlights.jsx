@@ -31,7 +31,7 @@ const ProductHighlights = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return <p className="text-center py-10">Loading products...</p>;
+  if (loading) return  <div className="flex items-center justify-center h-screen"> <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div> </div> ;
 
   return (
     <section className="py-12">

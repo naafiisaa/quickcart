@@ -4,7 +4,7 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-200 to-blue-50 dark:bg-gradient-to-r dark:from-blue-700 dark:via-gray-900 dark:to-blue-800 text-gray-900 dark:text-white py-10">
+    <footer className="bg-blue-300/40 dark:bg-gradient-to-r dark:from-blue-700 dark:via-gray-900 dark:to-blue-800 text-gray-900 dark:text-white py-10">
       <div className="container mx-auto px-4 md:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Brand */}
         <div className="space-y-4">
@@ -27,9 +27,9 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-2">Follow Us</h3>
           <div className="flex gap-3">
-            <a href="#" className="p-2 rounded-full bg-white text-blue-500"><FaFacebookF /></a>
-            <a href="#" className="p-2 rounded-full bg-white text-blue-500"><FaTwitter /></a>
-            <a href="#" className="p-2 rounded-full bg-white text-blue-500"><FaInstagram /></a>
+            <a href="https://www.facebook.com/" target="blank" className="p-2 rounded-full bg-white text-blue-500"><FaFacebookF /></a>
+            <a href="https://www.x.com/" target="blank" className="p-2 rounded-full bg-white text-blue-500"><FaTwitter /></a>
+            <a href="https://www.instagram.com" target="blank" className="p-2 rounded-full bg-white text-blue-500"><FaInstagram /></a>
           </div>
         </div>
 

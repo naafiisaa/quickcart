@@ -18,7 +18,7 @@ export default function Navbar() {
   const navbarGradient =
     theme === "dark"
       ? "bg-gradient-to-r from-blue-700 via-gray-900 to-blue-800"
-      : "bg-gradient-to-r from-blue-200 to-blue-50";
+      : "bg-gradient-to-r from-blue-300 via-gray-200 to-blue-50";
   const textColor = theme === "dark" ? "text-white" : "text-blue-900";
 
   // Navigation links
