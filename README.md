@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-#QuickCart -  Gadgets & Accessories
-=======
+
 # QuickCart - Gadgets & Accessories
->>>>>>> fa4aa166a1ee41f3fe5815e225db0784171fc771
 
 **Welcome to World Of Gadgets & Accessories**  
 Upgrade your life with smart gadgets and stylish accessories that make everyday life easier and more fun.
