@@ -8,6 +8,7 @@ Upgrade your life with smart gadgets and stylish accessories that make everyday 
 ## 📖 Project Description
 
 QuickCart is a modern e-commerce application built with Next.js 15 that showcases gadgets . The application features a clean, responsive design with both public and protected pages. Users can browse products publicly, view detailed product information, and after authentication, manage products through a protected dashboard.
+Live [https://quickcart1-server.vercel.app/]
 
 ### Key Features
 
@@ -138,12 +139,6 @@ pnpm build && pnpm start
 - Theme toggle for dark/light mode preference
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> fa4aa166a1ee41f3fe5815e225db0784171fc771
 ## 🧪 Testing
 
 ```bash
